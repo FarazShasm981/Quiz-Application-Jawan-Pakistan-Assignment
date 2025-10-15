@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    overflow-y: scroll;
+}
+body {
+    background-image: linear-gradient(to bottom,
+            rgba(255, 0, 0, 0.5),
+            /* Semi-transparent red at the top */
+            rgba(0, 0, 255, 0.5)
+            /* Semi-transparent blue at the bottom */
+        ),
+        url('./bg1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-family: "Jost", sans-serif;
+    overflow-x: hidden;
+
+}
+
+h1 {
+    font-size: 62px;
+    margin: 30px;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 600px;
+    /* border: 1px solid red; */
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+}
+
+h2 {
+    font-size: 24px;
+}
+
+.options {
+    margin: 20px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.options input {
+    cursor: pointer;
+}
+
+.options label {
+    margin-left: 20px;
+}
+
+#btn {
+    padding: 15px 25px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 255, 0.789);
+    color: white;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    
+    width: 100%;
+}
+
+#btn:disabled {
+
+    background-color: rgba(3, 3, 148, 0.5);
+}
