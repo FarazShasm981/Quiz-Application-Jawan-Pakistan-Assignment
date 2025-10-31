@@ -1,3 +1,17 @@
+var firebaseConfig = {
+  apiKey: "AIzaSyDF8n-ERjVze5z2R8gtpuIVB9-jh2GpHmA",
+  authDomain: "quiz-application-70c08.firebaseapp.com",
+  projectId: "quiz-application-70c08",
+  storageBucket: "quiz-application-70c08.firebasestorage.app",
+  messagingSenderId: "221522439177",
+  appId: "1:221522439177:web:b3346f340e779d19c9dcd8",
+  databaseURL: "https://quiz-application-70c08-default-rtdb.firebaseio.com",
+};
+
+// Initialize Firebase
+var app = firebase.initializeApp(firebaseConfig);
+var db = firebase.database();
+
 var questions = [
   {
     question: "Q1: HTML Stands for?",
@@ -79,33 +93,32 @@ var opt3 = document.getElementById("option3");
 var index = 0;
 var nextBtn = document.getElementById("btn");
 var score = 0;
-var min = 1;
-var sec = 59;
+// var min = 1;
+// var sec = 59;
 
-var Timer;
-function startTimer() {
-  Timer = setInterval(timer, 100);
-}
-function timer() {
-  var timeElement = document.getElementById("time");
-  timeElement.innerHTML = min + ":" + sec;
-  sec--;
-  if (sec < 0) {
-    min--;
-    sec = 59;
-    if (min < 0) {
-      clearInterval(Timer);
-      next();
-      min = 1;
-      sec = 59;
-      startTimer();
-    }
-  }
-}
-startTimer();
-
+// var Timer;
+// function startTimer() {
+//   Timer = setInterval(timer, 100);
+// }
+// function timer() {
+//   var timeElement = document.getElementById("time");
+//   timeElement.innerHTML = min + ":" + sec;
+//   sec--;
+//   if (sec < 0) {
+//     min--;
+//     sec = 59;
+//     if (min < 0) {
+//       clearInterval(Timer);
+//       next();
+//       min = 1;
+//       sec = 59;
+//       startTimer();
+//     }
+//   }
+// }
+// startTimer();
+next();
 function next() {
-
   var allInputs = document.getElementsByTagName("input");
 
   for (var i = 0; i < allInputs.length; i++) {
@@ -126,6 +139,7 @@ function next() {
   }
 
   nextBtn.disabled = true;
+  sendtoDB();
 
   if (index > questions.length - 1) {
     var progress = (score / questions.length) * 100;
@@ -169,4 +183,17 @@ function next() {
 
 function tigger() {
   nextBtn.disabled = false;
+}
+
+function sendtoDB() {
+  for (var i = 0; i < questions.length; i++) {
+    var q = questions[i];
+    console.log(q);
+    var obj = {
+      quest: q.question,
+      corrAns: q.corrAnswer,
+    };
+    firebase.database().ref("Ques_CorrAns").push(obj);
+  }
+
 }

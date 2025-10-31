@@ -5,9 +5,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-html{
+
+html {
     overflow-y: scroll;
 }
+
 body {
     background-image: linear-gradient(to bottom,
             rgba(255, 0, 0, 0.5),
@@ -76,11 +78,28 @@ h2 {
     outline: none;
     cursor: pointer;
     border: none;
-    
+
     width: 100%;
 }
 
 #btn:disabled {
 
     background-color: rgba(3, 3, 148, 0.5);
+}
+
+@media(max-width:760px) {
+    h1 {
+        font-size: 46px;
+    }
+    .container{
+        max-width: 500px;
+    }
+}
+@media(max-width:480px) {
+    h1 {
+        font-size: 30px;
+    }
+    .container{
+        max-width: 350px;
+    }
 }
